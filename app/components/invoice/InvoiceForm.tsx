@@ -52,7 +52,7 @@ const InvoiceForm = () => {
     }, [invoiceNumber]);
 
     return (
-        <div className={`xl:w-[55%]`}>
+        <div>
             <Card>
                 <CardHeader>
                     <div className="flex gap-3">

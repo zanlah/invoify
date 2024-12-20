@@ -32,6 +32,8 @@ import { CalendarIcon } from "lucide-react";
 
 // Types
 import { NameType } from "@/types";
+import { useTranslationContext } from "@/contexts/TranslationContext";
+import { useLocale } from "next-intl";
 
 type DatePickerFormFieldProps = {
     name: NameType;
@@ -40,6 +42,8 @@ type DatePickerFormFieldProps = {
 
 const DatePickerFormField = ({ name, label }: DatePickerFormFieldProps) => {
     const { control } = useFormContext();
+    const { _t } = useTranslationContext();
+    const locale = useLocale();
 
     const [isPopoverOpen, setIsPopoverOpen] = useState(false);
 
@@ -66,7 +70,7 @@ const DatePickerFormField = ({ name, label }: DatePickerFormFieldProps) => {
                                                 className={cn(
                                                     "w-[13rem]",
                                                     !field.value &&
-                                                        "text-muted-foreground"
+                                                    "text-muted-foreground"
                                                 )}
                                             >
                                                 <CalendarIcon className="mr-2 h-4 w-4" />
@@ -74,11 +78,11 @@ const DatePickerFormField = ({ name, label }: DatePickerFormFieldProps) => {
                                                     new Date(
                                                         field.value
                                                     ).toLocaleDateString(
-                                                        "en-US",
+                                                        locale,
                                                         DATE_OPTIONS
                                                     )
                                                 ) : (
-                                                    <span>Pick a date</span>
+                                                    <span>{_t("form.steps.invoiceDetails.pickDate")}</span>
                                                 )}
                                             </Button>
                                         </FormControl>

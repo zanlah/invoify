@@ -35,7 +35,7 @@ const InvoiceDetails = () => {
                     <FormInput
                         name="details.invoiceNumber"
                         label={_t("form.steps.invoiceDetails.invoiceNumber")}
-                        placeholder="Invoice number"
+                        placeholder={_t("form.steps.invoiceDetails.invoiceNumber")}
                     />
 
                     <DatePickerFormField
@@ -55,9 +55,9 @@ const InvoiceDetails = () => {
                     />
                 </div>
 
-                <div className="flex flex-col gap-2">
+                {/* <div className="flex flex-col gap-2">
                     <TemplateSelector />
-                </div>
+                </div> */}
             </div>
         </section>
     );

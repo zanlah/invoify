@@ -18,7 +18,7 @@ import {
     MoveLeft,
     Printer,
 } from "lucide-react";
-
+import { useTranslations } from "next-intl";
 export default function FinalPdf() {
     const {
         pdfUrl,
@@ -30,9 +30,11 @@ export default function FinalPdf() {
         sendPdfToMail,
     } = useInvoiceContext();
 
+    const t = useTranslations("actions");
+
     return (
         <>
-            <Subheading>Final PDF:</Subheading>
+            <Subheading>{t("finalPdfView")}:</Subheading>
             <div className="flex items-center mb-3">
                 <BaseButton
                     variant={"ghost"}
@@ -40,61 +42,61 @@ export default function FinalPdf() {
                     onClick={removeFinalPdf}
                 >
                     <MoveLeft className="w-5 h-5" />
-                    Back to Live Preview
+                    {t("backToPreview")}
                 </BaseButton>
             </div>
 
             {/* Buttons */}
             <div className="flex flex-wrap gap-2 my-1">
                 <BaseButton
-                    tooltipLabel="Preview invoice in new tab"
+                    tooltipLabel={t("previewPdfDescription")}
                     onClick={previewPdfInTab}
                     size="sm"
                     variant={"outline"}
                 >
                     <Eye className="w-5 h-5" />
-                    Preview
+                    {t("previewPdf")}
                 </BaseButton>
                 <BaseButton
-                    tooltipLabel="Download invoice PDF"
+                    tooltipLabel={t("downloadPdfDescription")}
                     onClick={downloadPdf}
                     size="sm"
                     variant={"outline"}
                 >
                     <DownloadCloudIcon className="w-5 h-5" />
-                    Download
+                    {t("downloadPdf")}
                 </BaseButton>
 
                 <BaseButton
-                    tooltipLabel="Print invoice"
+                    tooltipLabel={t("printInvoiceDescription")}
                     onClick={printPdf}
                     size="sm"
                     variant={"outline"}
                 >
                     <Printer className="w-5 h-5" />
-                    Print
+                    {t("printInvoice")}
                 </BaseButton>
 
                 <BaseButton
-                    tooltipLabel="Save invoice in website"
+                    tooltipLabel={t("saveInvoiceDescription")}
                     onClick={saveInvoice}
                     size="sm"
                     variant={"outline"}
                 >
                     <BookmarkIcon className="w-5 h-5" />
-                    Save
+                    {t("saveInvoice")}
                 </BaseButton>
 
-                <SendPdfToEmailModal sendPdfToMail={sendPdfToMail}>
+                {/* <SendPdfToEmailModal sendPdfToMail={sendPdfToMail}>
                     <BaseButton
                         tooltipLabel="Send invoice PDF to mail"
                         size="sm"
                         variant={"outline"}
                     >
                         <Mail className="w-5 h-5" />
-                        Send to mail
+                        {t("sendToMail")}
                     </BaseButton>
-                </SendPdfToEmailModal>
+                </SendPdfToEmailModal>*/}
             </div>
             <AspectRatio ratio={1 / 1.4}>
                 <iframe

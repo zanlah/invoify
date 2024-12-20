@@ -11,9 +11,22 @@ import { DATE_OPTIONS } from "@/lib/variables";
 
 // Types
 import { InvoiceType } from "@/types";
-
-const InvoiceTemplate2 = (data: InvoiceType) => {
+interface InvoiceTemplateProps extends InvoiceType {
+    t: (key: string) => string;
+}
+const InvoiceTemplate2 = (props: InvoiceTemplateProps) => {
+    //const t = useTranslations('invoiceTemplate');
+    const { t, ...data } = props;
     const { sender, receiver, details } = data;
+
+    const translate = (key: string) => {
+        if (t) {
+            // If t is provided directly (server-side)
+            return t(key);
+        }
+        // Fallback to key if no translation function
+        return key;
+    };
     return (
         <InvoiceLayout data={data}>
             <div className="flex justify-between">
@@ -163,7 +176,7 @@ const InvoiceTemplate2 = (data: InvoiceType) => {
                                     </dt>
                                     <dd className="col-span-2 text-gray-500">
                                         {details.discountDetails.amountType ===
-                                        "amount"
+                                            "amount"
                                             ? `- ${details.discountDetails.amount} ${details.currency}`
                                             : `- ${details.discountDetails.amount}%`}
                                     </dd>
@@ -177,7 +190,7 @@ const InvoiceTemplate2 = (data: InvoiceType) => {
                                     </dt>
                                     <dd className="col-span-2 text-gray-500">
                                         {details.taxDetails.amountType ===
-                                        "amount"
+                                            "amount"
                                             ? `+ ${details.taxDetails.amount} ${details.currency}`
                                             : `+ ${details.taxDetails.amount}%`}
                                     </dd>
@@ -191,7 +204,7 @@ const InvoiceTemplate2 = (data: InvoiceType) => {
                                     </dt>
                                     <dd className="col-span-2 text-gray-500">
                                         {details.shippingDetails.costType ===
-                                        "amount"
+                                            "amount"
                                             ? `+ ${details.shippingDetails.cost} ${details.currency}`
                                             : `+ ${details.shippingDetails.cost}%`}
                                     </dd>

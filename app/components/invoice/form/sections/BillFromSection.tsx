@@ -46,37 +46,37 @@ const BillFromSection = () => {
             <FormInput
                 name="sender.name"
                 label={_t("form.steps.fromAndTo.name")}
-                placeholder="Your name"
+                placeholder={_t("form.steps.fromAndTo.placeholderNameFrom")}
             />
             <FormInput
                 name="sender.address"
                 label={_t("form.steps.fromAndTo.address")}
-                placeholder="Your address"
+                placeholder={_t("form.steps.fromAndTo.placeholderAddressFrom")}
             />
             <FormInput
                 name="sender.zipCode"
                 label={_t("form.steps.fromAndTo.zipCode")}
-                placeholder="Your zip code"
+                placeholder={_t("form.steps.fromAndTo.placeholderZipCodeFrom")}
             />
             <FormInput
                 name="sender.city"
                 label={_t("form.steps.fromAndTo.city")}
-                placeholder="Your city"
+                placeholder={_t("form.steps.fromAndTo.placeholderCityFrom")}
             />
             <FormInput
                 name="sender.country"
                 label={_t("form.steps.fromAndTo.country")}
-                placeholder="Your country"
+                placeholder={_t("form.steps.fromAndTo.placeholderCountryFrom")}
             />
             <FormInput
                 name="sender.email"
                 label={_t("form.steps.fromAndTo.email")}
-                placeholder="Your email"
+                placeholder={_t("form.steps.fromAndTo.placeholderEmailFrom")}
             />
             <FormInput
                 name="sender.phone"
                 label={_t("form.steps.fromAndTo.phone")}
-                placeholder="Your phone number"
+                placeholder={_t("form.steps.fromAndTo.placeholderPhoneFrom")}
             />
 
             {/* //? key = field.id fixes a bug where wrong field gets deleted  */}

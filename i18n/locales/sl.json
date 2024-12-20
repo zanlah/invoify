@@ -1,0 +1,153 @@
+{
+  "form": {
+    "title": "Račun",
+    "description": "Ustvari račun",
+    "newInvBadge": "Nov račun",
+    "wizard": {
+      "fromAndTo": "Od & Za",
+      "invoiceDetails": "Podatki računa",
+      "lineItems": "Artikli",
+      "paymentInfo": "Podatki o plačilu",
+      "summary": "Povzetek",
+      "next": "Naprej",
+      "back": "Nazaj"
+    },
+    "steps": {
+      "fromAndTo": {
+        "PlaceholderFrom": "Tvoje",
+        "PlaceholderTo": "prejemnika",
+        "billFrom": "Izdajatelj računa",
+        "billTo": "Prejemnik računa",
+        "name": "Ime",
+        "placeholderNameFrom": "Tvoje ime",
+        "placeholderNameTo": "Ime Prejemnika",
+        "address": "Naslov",
+        "placeholderAddressFrom": "Tvoj naslov",
+        "placeholderAddressTo": "Naslov Prejemnika",
+        "zipCode": "Poštna številka",
+        "placeholderZipCodeFrom": "Tvoja poštna številka",
+        "placeholderZipCodeTo": "Poštna številka Prejemnika",
+        "city": "Mesto",
+        "placeholderCityFrom": "Tvoje mesto",
+        "placeholderCityTo": "Mesto Prejemnika",
+        "country": "Država",
+        "placeholderCountryFrom": "Tvoja država",
+        "placeholderCountryTo": "Država Prejemnika",
+        "email": "E-pošta",
+        "placeholderEmailFrom": "Tvoja e-pošta",
+        "placeholderEmailTo": "E-pošta Prejemnika",
+        "phone": "Telefon",
+        "placeholderPhoneFrom": "Tvoj telefon",
+        "placeholderPhoneTo": "Telefon Prejemnika",
+        "addCustomInput": "Dodaj polje po meri",
+        "sender": "Pošiljatelj",
+        "receiver": "Prejemnik"
+      },
+      "invoiceDetails": {
+        "heading": "Podatki računa",
+
+        "invoiceLogo": {
+          "label": "Logotip",
+          "placeholder": "Kliknite za nalaganje slike"
+        },
+        "invoiceNumber": "Številka računa",
+        "issuedDate": "Datum izdaje",
+        "dueDate": "Rok plačila",
+        "pickDate": "Izberi datum",
+        "currency": "Valuta"
+      },
+      "lineItems": {
+        "heading": "Postavke",
+        "item": "Postavka",
+        "name": "Naziv",
+        "quantity": "Količina",
+        "rate": "Cena",
+        "total": "Skupaj",
+        "description": "Opis",
+        "addNewItem": "Dodaj novo postavko",
+        "removeItem": "Odstrani postavko"
+      },
+      "paymentInfo": {
+        "heading": "Podatki o plačilu",
+        "bankName": "Ime banke",
+        "accountName": "Ime računa",
+        "accountNumber": "Številka računa"
+      },
+      "summary": {
+        "heading": "Povzetek",
+        "signature": {
+          "heading": "Podpis",
+          "placeholder": "Kliknite za dodajanje podpisa",
+          "draw": "Nariši",
+          "type": "Natipkaj",
+          "upload": "Naloži"
+        },
+        "additionalNotes": "Dodatne opombe",
+        "paymentTerms": "Plačilni pogoji",
+        "discount": "Popust",
+        "tax": "Davek",
+        "shipping": "Poštnina",
+        "subTotal": "Vmesni znesek",
+        "totalAmount": "Skupni znesek",
+        "includeTotalInWords": "Vključi znesek z besedo?",
+        "yes": "Da",
+        "no": "Ne"
+      }
+    }
+  },
+  "actions": {
+    "title": "Dejanja",
+    "description": "Operacije in predogled",
+    "loadInvoice": "Naloži račun",
+    "loadInvoiceDescription": "Naloži račun iz datoteke",
+    "exportInvoice": "Izvozi račun",
+    "exportInvoiceDescription": "Izvozi račun v datoteko",
+    "newInvoice": "Nov račun",
+    "newInvoiceDescription": "Ustvari novi račun",
+    "generatePdf": "Ustvari PDF",
+    "generatePdfDescription": "Ustvari PDF račun",
+    "pdfView": "PDF predogled",
+    "pdfViewDescription": "Predogled PDF računa",
+    "generatingInvoice": "Generiranje računa",
+    "downloadPdf": "Prenesi PDF",
+    "downloadPdfDescription": "Prenesi PDF račun",
+    "previewPdf": "Predogled PDF",
+    "previewPdfDescription": "Predogled PDF računa",
+    "saveInvoice": "Shrani račun",
+    "saveInvoiceDescription": "Shrani račun v spletni strani",
+    "printInvoice": "Natisni račun",
+    "printInvoiceDescription": "Natisni račun na računalniku",
+    "backToPreview": "Nazaj na predogled",
+    "finalPdfView": "Končni PDF"
+  },
+  "invoiceTemplate": {
+    "invoice": "Račun",
+    "billTo": "Račun za",
+    "invoiceDate": "Datum računa",
+    "dueDate": "Rok plačila",
+    "invoiceNumber": "Številka računa",
+    "item": "Artikel",
+    "qty": "Količina",
+    "rate": "Cena",
+    "amount": "Skupaj",
+    "subtotal": "Vmesni znesek",
+    "discount": "Popust",
+    "tax": "Davek",
+    "shipping": "Poštnina",
+    "total": "Skupni znesek",
+    "totalInWords": "Skupni znesek z besedo",
+    "additionalNotes": "Dodatne opombe",
+    "paymentTerms": "Plačilni pogoji",
+    "paymentAddress": "Plačilo po naslovu",
+    "signature": "Podpis",
+    "bankName": "Ime banke",
+    "accountName": "Ime računa",
+    "accountNumber": "Številka računa",
+    "bank": "Banka",
+    "accountNo": "Številka računa",
+    "contactInfo": "Če imate vprašanja glede tega računa, nas kontaktirajte."
+  },
+  "footer": {
+    "developedBy": "Razvil"
+  }
+}

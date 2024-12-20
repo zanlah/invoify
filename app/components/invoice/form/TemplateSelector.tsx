@@ -30,23 +30,27 @@ import { Check } from "lucide-react";
 // Types
 import { InvoiceType } from "@/types";
 
+// i18n
+import { useTranslations } from "next-intl";
+
 const TemplateSelector = () => {
     const { watch, setValue } = useFormContext<InvoiceType>();
     const formValues = watch();
+    const t = useTranslations("invoiceTemplate");
     const templates = [
         {
             id: 1,
             name: "Template 1",
             description: "Template 1 description",
             img: template1,
-            component: <InvoiceTemplate1 {...formValues} />,
+            component: <InvoiceTemplate1 {...formValues} t={t} />,
         },
         {
             id: 2,
             name: "Template 2",
             description: "Second template",
             img: template1,
-            component: <InvoiceTemplate2 {...formValues} />,
+            component: <InvoiceTemplate2 {...formValues} t={t} />,
         },
     ];
     return (
@@ -74,10 +78,10 @@ const TemplateSelector = () => {
                                         <div className="relative">
                                             {formValues.details.pdfTemplate ===
                                                 template.id && (
-                                                <div className="shadow-lg absolute right-2 top-2 rounded-full bg-blue-300 dark:bg-blue-600">
-                                                    <Check />
-                                                </div>
-                                            )}
+                                                    <div className="shadow-lg absolute right-2 top-2 rounded-full bg-blue-300 dark:bg-blue-600">
+                                                        <Check />
+                                                    </div>
+                                                )}
                                             <Image
                                                 src={template.img}
                                                 alt={template.name}

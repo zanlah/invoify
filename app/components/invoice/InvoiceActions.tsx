@@ -23,15 +23,17 @@ import { useInvoiceContext } from "@/contexts/InvoiceContext";
 // Icons
 import { FileInput, FolderUp, Import, Plus } from "lucide-react";
 
+import { useTranslations } from 'next-intl';
+
 const InvoiceActions = () => {
     const { invoicePdfLoading } = useInvoiceContext();
-
+    const t = useTranslations('actions');
     return (
-        <div className={`xl:w-[45%]`}>
+        <div>
             <Card className="h-auto sticky top-0 px-2">
                 <CardHeader>
-                    <CardTitle>ACTIONS</CardTitle>
-                    <CardDescription>Operations and preview</CardDescription>
+                    <CardTitle>{t('title')}</CardTitle>
+                    <CardDescription>{t('description')}</CardDescription>
                 </CardHeader>
 
                 <div className="flex flex-col flex-wrap items-center gap-2">
@@ -40,11 +42,11 @@ const InvoiceActions = () => {
                         <InvoiceLoaderModal>
                             <BaseButton
                                 variant="outline"
-                                tooltipLabel="Open load invoice menu"
+                                tooltipLabel={t('loadInvoiceDescription')}
                                 disabled={invoicePdfLoading}
                             >
                                 <FolderUp />
-                                Load Invoice
+                                {t('loadInvoice')}
                             </BaseButton>
                         </InvoiceLoaderModal>
 
@@ -52,11 +54,11 @@ const InvoiceActions = () => {
                         <InvoiceExportModal>
                             <BaseButton
                                 variant="outline"
-                                tooltipLabel="Open load invoice menu"
+                                tooltipLabel={t('exportInvoiceDescription')}
                                 disabled={invoicePdfLoading}
                             >
                                 <Import />
-                                Export Invoice
+                                {t('exportInvoice')}
                             </BaseButton>
                         </InvoiceExportModal>
                     </div>
@@ -66,23 +68,23 @@ const InvoiceActions = () => {
                         <NewInvoiceAlert>
                             <BaseButton
                                 variant="outline"
-                                tooltipLabel="Get a new invoice form"
+                                tooltipLabel={t('newInvoiceDescription')}
                                 disabled={invoicePdfLoading}
                             >
                                 <Plus />
-                                New Invoice
+                                {t('newInvoice')}
                             </BaseButton>
                         </NewInvoiceAlert>
 
                         {/* Generate pdf button */}
                         <BaseButton
                             type="submit"
-                            tooltipLabel="Generate your invoice"
+                            tooltipLabel={t('generatePdfDescription')}
                             loading={invoicePdfLoading}
-                            loadingText="Generating your invoice"
+                            loadingText={t('generatingInvoice')}
                         >
                             <FileInput />
-                            Generate PDF
+                            {t('generatePdf')}
                         </BaseButton>
                     </div>
 

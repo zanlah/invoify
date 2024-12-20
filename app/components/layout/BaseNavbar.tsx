@@ -5,7 +5,7 @@ import Link from "next/link";
 import Image from "next/image";
 
 // Assets
-import Logo from "@/public/assets/img/invoify-logo.svg";
+import Logo from "@/public/assets/img/racunomat-logo.svg";
 
 // ShadCn
 import { Card } from "@/components/ui/card";
@@ -21,7 +21,7 @@ const BaseNavbar = () => {
     return (
         <header className="lg:container z-[99]">
             <nav>
-                <Card className="flex flex-wrap justify-between items-center px-5 gap-5">
+                <div className="flex rounded-xl bg-white dark:bg-gray-900 flex-wrap justify-between items-center px-5 gap-5">
                     <Link href={"/"}>
                         <Image
                             src={Logo}
@@ -33,9 +33,9 @@ const BaseNavbar = () => {
                     </Link>
                     {/* ? DEV Only */}
                     {devEnv && <DevDebug />}
-                    <LanguageSelector />
+                    {/* <LanguageSelector /> */}
                     <ThemeSwitcher />
-                </Card>
+                </div>
             </nav>
         </header>
     );
