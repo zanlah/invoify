@@ -12,8 +12,8 @@ export const ROOTKEYWORDS = [
 export const JSONLD = {
   "@context": "https://schema.org",
   "@type": "Website",
-  name: "Invoify",
-  description: "An Invoice Generator Web App",
+  name: "Računomat",
+  description: "Aplikacija za generiranje računov",
   keywords: ROOTKEYWORDS,
   url: BASE_URL,
   image:

@@ -8,7 +8,7 @@ import Error from "next/error";
 
 export default function NotFound() {
     return (
-        <html lang="en">
+        <html lang="sl">
             <body>
                 <Error statusCode={404} />
             </body>

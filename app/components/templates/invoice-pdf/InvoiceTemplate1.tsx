@@ -126,33 +126,36 @@ const InvoiceTemplate = (props: InvoiceTemplateProps) => {
                         </div>
                         <div className="hidden sm:block border-b border-gray-200"></div>
                         <div className="grid grid-cols-3 sm:grid-cols-5 gap-y-1">
-                            {details.items.map((item, index) => (
-                                <React.Fragment key={index}>
-                                    <div className="col-span-full sm:col-span-2 border-b border-gray-300">
-                                        <p className="font-medium text-gray-800">
-                                            {item.name}
-                                        </p>
-                                        <p className="text-xs text-gray-600 whitespace-pre-line">
-                                            {item.description}
-                                        </p>
-                                    </div>
-                                    <div className="border-b border-gray-300">
-                                        <p className="text-gray-800">
-                                            {item.quantity}
-                                        </p>
-                                    </div>
-                                    <div className="border-b border-gray-300">
-                                        <p className="text-gray-800">
-                                            {item.unitPrice} {details.currency}
-                                        </p>
-                                    </div>
-                                    <div className="border-b border-gray-300">
-                                        <p className="sm:text-right text-gray-800">
-                                            {item.total} {details.currency}
-                                        </p>
-                                    </div>
-                                </React.Fragment>
-                            ))}
+                            {details.items.map((item, index) => {
+                                const isLastItem = index === details.items.length - 1;
+                                return (
+                                    <React.Fragment key={index}>
+                                        <div className={`col-span-full sm:col-span-2 ${!isLastItem ? 'border-b border-gray-300' : ''}`}>
+                                            <p className="font-medium text-gray-800">
+                                                {item.name}
+                                            </p>
+                                            <p className="text-xs text-gray-600 whitespace-pre-line">
+                                                {item.description}
+                                            </p>
+                                        </div>
+                                        <div className={`${!isLastItem ? 'border-b border-gray-300' : ''}`}>
+                                            <p className="text-gray-800">
+                                                {item.quantity}
+                                            </p>
+                                        </div>
+                                        <div className={`${!isLastItem ? 'border-b border-gray-300' : ''}`}>
+                                            <p className="text-gray-800">
+                                                {item.unitPrice} {details.currency}
+                                            </p>
+                                        </div>
+                                        <div className={`${!isLastItem ? 'border-b border-gray-300' : ''}`}>
+                                            <p className="sm:text-right text-gray-800">
+                                                {item.total} {details.currency}
+                                            </p>
+                                        </div>
+                                    </React.Fragment>
+                                );
+                            })}
                         </div>
                         <div className="sm:hidden border-b border-gray-200"></div>
                     </div>
@@ -278,6 +281,10 @@ const InvoiceTemplate = (props: InvoiceTemplateProps) => {
                                 <p className="text-sm">
                                     {translate("accountNo")}{" "}
                                     {details.paymentInformation?.accountNumber}
+                                </p>
+                                <p className="text-sm">
+                                    {translate("reference")}{" "}
+                                    {details.paymentInformation?.reference}
                                 </p>
                             </span>
                         </div>

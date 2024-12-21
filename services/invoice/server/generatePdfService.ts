@@ -50,6 +50,7 @@ export async function generatePdfService(req: NextRequest) {
     bank: "Banka",
     accountNo: "Številka računa",
     contactInfo: "Če imate vprašanja glede tega računa, nas kontaktirajte.",
+    reference: "Referenca",
   };
   const t = createTranslator({ locale, messages });
   // Create a browser instance

@@ -71,7 +71,8 @@
         "heading": "Podatki o plačilu",
         "bankName": "Ime banke",
         "accountName": "Ime računa",
-        "accountNumber": "Številka računa"
+        "accountNumber": "Številka računa",
+        "reference": "Referenca"
       },
       "summary": {
         "heading": "Povzetek",
@@ -145,7 +146,8 @@
     "accountNumber": "Številka računa",
     "bank": "Banka",
     "accountNo": "Številka računa",
-    "contactInfo": "Če imate vprašanja glede tega računa, nas kontaktirajte."
+    "contactInfo": "Če imate vprašanja glede tega računa, nas kontaktirajte.",
+    "reference": "Referenca"
   },
   "footer": {
     "developedBy": "Razvil"

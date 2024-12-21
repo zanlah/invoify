@@ -30,6 +30,12 @@ const PaymentInformation = () => {
                     placeholder={_t("form.steps.paymentInfo.accountNumber")}
                     vertical
                 />
+                <FormInput
+                    name="details.paymentInformation.reference"
+                    label={_t("form.steps.paymentInfo.reference")}
+                    placeholder={_t("form.steps.paymentInfo.reference")}
+                    vertical
+                />
             </div>
         </section>
     );

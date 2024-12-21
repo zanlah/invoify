@@ -173,6 +173,7 @@ const Charges = () => {
                         </p>
                         <Switch
                             checked={totalInWordsSwitch}
+                            disabled={true}
                             onCheckedChange={(value) => {
                                 setTotalInWordsSwitch(value);
                             }}

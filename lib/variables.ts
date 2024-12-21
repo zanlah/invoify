@@ -165,6 +165,7 @@ export const FORM_DEFAULT_VALUES = {
       bankName: "",
       accountName: "",
       accountNumber: "",
+      referene: "",
     },
     additionalNotes: "",
     paymentTerms: "",

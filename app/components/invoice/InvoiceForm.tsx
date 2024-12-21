@@ -53,7 +53,7 @@ const InvoiceForm = () => {
 
     return (
         <div>
-            <Card>
+            <Card className="bg-gray-900 border-none">
                 <CardHeader>
                     <div className="flex gap-3">
                         <CardTitle className="flex items-center gap-3">

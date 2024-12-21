@@ -19,23 +19,23 @@ import { InvoiceType, ItemType } from "@/types";
 
 const defaultChargesContext = {
     discountSwitch: false,
-    setDiscountSwitch: (newValue: boolean) => {},
+    setDiscountSwitch: (newValue: boolean) => { },
     taxSwitch: false,
-    setTaxSwitch: (newValue: boolean) => {},
+    setTaxSwitch: (newValue: boolean) => { },
     shippingSwitch: false,
-    setShippingSwitch: (newValue: boolean) => {},
+    setShippingSwitch: (newValue: boolean) => { },
     discountType: "amount",
-    setDiscountType: (newValue: SetStateAction<string>) => {},
+    setDiscountType: (newValue: SetStateAction<string>) => { },
     taxType: "amount",
-    setTaxType: (newValue: SetStateAction<string>) => {},
+    setTaxType: (newValue: SetStateAction<string>) => { },
     shippingType: "amount",
-    setShippingType: (newValue: SetStateAction<string>) => {},
-    totalInWordsSwitch: true,
-    setTotalInWordsSwitch: (newValue: boolean) => {},
-    currency: "USD",
+    setShippingType: (newValue: SetStateAction<string>) => { },
+    totalInWordsSwitch: false,
+    setTotalInWordsSwitch: (newValue: boolean) => { },
+    currency: "EUR",
     subTotal: 0,
     totalAmount: 0,
-    calculateTotal: () => {},
+    calculateTotal: () => { },
 };
 
 export const ChargesContext = createContext(defaultChargesContext);
@@ -93,7 +93,7 @@ export const ChargesContextProvider = ({ children }: ChargesContextProps) => {
 
     // ? Old approach of using totalInWords variable
     // totalInWords ? true : false
-    const [totalInWordsSwitch, setTotalInWordsSwitch] = useState<boolean>(true);
+    const [totalInWordsSwitch, setTotalInWordsSwitch] = useState<boolean>(false);
 
     // Initial subtotal and total
     const [subTotal, setSubTotal] = useState<number>(0);
@@ -233,7 +233,7 @@ export const ChargesContextProvider = ({ children }: ChargesContextProps) => {
         setValue("details.shippingDetails.costType", shippingCostType);
 
         setValue("details.totalAmount", total);
-        
+
         if (totalInWordsSwitch) {
             setValue("details.totalAmountInWords", formatPriceToString(total, getValues("details.currency")));
         } else {
