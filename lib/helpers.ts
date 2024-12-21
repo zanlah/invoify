@@ -8,6 +8,8 @@ import numberToWords from "number-to-words";
 import currenciesDetails from "@/public/assets/data/currencies.json";
 import { CurrencyDetails } from "@/types";
 
+import QRCode from "qrcode";
+
 /**
  * Formats a number with commas and decimal places
  *
@@ -201,7 +203,93 @@ const fileToBuffer = async (file: File) => {
   return pdfBuffer;
 };
 
+interface Sender {
+  name: string;
+  address: string;
+  post: string;
+  city: string;
+}
+
+interface ReceiverPayment {
+  amount: number;
+  reason: string;
+  iban: string;
+  name: string;
+  address: string;
+  post: string;
+  city: string;
+}
+
+/**
+ * Generates payment fields for processing.
+ *
+ * @param {Sender} sender - The sender's information.
+ * @param {ReceiverPayment} receiverPayment - The receiver's payment details.
+ * @returns {string} A formatted string of payment fields separated by newlines.
+ */
+const generatePaymentQR = (
+  sender: Sender,
+  receiverPayment: ReceiverPayment
+): string => {
+  const fields = [
+    "UPNQR",
+    "",
+    "",
+    "",
+    "",
+    (sender.name || "").trim(),
+    (sender.address || "").trim(),
+    `${sender.post} ${sender.city}`.trim(),
+    String(receiverPayment.amount * 100).padStart(11, "0"),
+    "",
+    "",
+    "GDSV",
+    (receiverPayment.reason || "").trim(),
+    "",
+    (receiverPayment.iban || "").trim(),
+    "SI99",
+    (receiverPayment.name || "").trim(),
+    (receiverPayment.address || "").trim(),
+    `${receiverPayment.post} ${receiverPayment.city}`.trim(),
+  ];
+
+  // Calculate and add the checksum
+  const checksum = String(
+    19 + fields.reduce((a, v) => a + v.length, 0)
+  ).padStart(3, "0");
+  fields.push(checksum, "");
+
+  return fields.join("\n");
+};
+
+/**
+ * Generates a base64 QR code from a string
+ *
+ * @param {string} qrCode - The string to encode in the QR code
+ * @returns {Promise<string>} A promise that resolves to a base64 encoded QR code image
+ */
+const Base64QRCode = async (qrCode: string): Promise<string> => {
+  try {
+    // Generate QR code as base64 string
+    const base64QR = await QRCode.toDataURL(qrCode, {
+      errorCorrectionLevel: "M",
+      margin: 4,
+      width: 200,
+      color: {
+        dark: "#000000",
+        light: "#ffffff",
+      },
+    });
+
+    return base64QR;
+  } catch (err) {
+    console.error("Error generating QR code:", err);
+    throw err;
+  }
+};
+
 export {
+  generatePaymentQR,
   formatNumberWithCommas,
   formatPriceToString,
   flattenObject,
@@ -209,4 +297,5 @@ export {
   isDataUrl,
   getInvoiceTemplate,
   fileToBuffer,
+  Base64QRCode,
 };

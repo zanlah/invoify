@@ -12,7 +12,7 @@ import React, {
 import { useFormContext, useWatch } from "react-hook-form";
 
 // Helpers
-import { formatPriceToString } from "@/lib/helpers";
+import { formatPriceToString, generatePaymentQR, Base64QRCode } from "@/lib/helpers";
 
 // Types
 import { InvoiceType, ItemType } from "@/types";
@@ -32,6 +32,8 @@ const defaultChargesContext = {
     setShippingType: (newValue: SetStateAction<string>) => { },
     totalInWordsSwitch: false,
     setTotalInWordsSwitch: (newValue: boolean) => { },
+    generateQRSwitch: false,
+    setGenerateQRSwitch: (newValue: boolean) => { },
     currency: "EUR",
     subTotal: 0,
     totalAmount: 0,
@@ -95,6 +97,10 @@ export const ChargesContextProvider = ({ children }: ChargesContextProps) => {
     // totalInWords ? true : false
     const [totalInWordsSwitch, setTotalInWordsSwitch] = useState<boolean>(false);
 
+
+    // generateQRSwitch ? true : false
+    const [generateQRSwitch, setGenerateQRSwitch] = useState<boolean>(false);
+
     // Initial subtotal and total
     const [subTotal, setSubTotal] = useState<number>(0);
     const [totalAmount, setTotalAmount] = useState<number>(0);
@@ -150,7 +156,9 @@ export const ChargesContextProvider = ({ children }: ChargesContextProps) => {
         if (!shippingSwitch) {
             setValue("details.shippingDetails.cost", 0);
         }
-    }, [discountSwitch, taxSwitch, shippingSwitch]);
+
+
+    }, [discountSwitch, taxSwitch, shippingSwitch, generateQRSwitch]);
 
     // Calculate total when values change
     useEffect(() => {
@@ -158,6 +166,7 @@ export const ChargesContextProvider = ({ children }: ChargesContextProps) => {
     }, [
         itemsArray,
         totalInWordsSwitch,
+
         discountType,
         discount?.amount,
         taxType,
@@ -166,6 +175,10 @@ export const ChargesContextProvider = ({ children }: ChargesContextProps) => {
         shipping?.cost,
         currency,
     ]);
+
+    useEffect(() => {
+        generateQRCode();
+    }, [generateQRSwitch]);
 
     /**
      * Calculates the subtotal, total, and the total amount in words on the invoice.
@@ -239,7 +252,40 @@ export const ChargesContextProvider = ({ children }: ChargesContextProps) => {
         } else {
             setValue("details.totalAmountInWords", "");
         }
+
+
     };
+
+    const generateQRCode = async () => {
+        if (generateQRSwitch) {
+            const formValues = getValues();
+
+            const payerInfo = {
+                name: formValues.sender.name,
+                address: formValues.sender.address,
+                post: formValues.sender.zipCode,
+                city: formValues.sender.city,
+            };
+
+            // Extract payment details from the form
+            const paymentDetails = {
+                amount: totalAmount, // Assuming totalAmount is already calculated
+                iban: formValues.details.paymentInformation?.accountNumber || "",
+                reason: `Plačilo za fakturo ${formValues.details.invoiceNumber}`, // Customize as needed
+                name: formValues.receiver.name,
+                address: formValues.receiver.address,
+                post: formValues.receiver.zipCode,
+                city: formValues.receiver.city,
+            };
+
+            const qrCodeData = await Base64QRCode(
+                generatePaymentQR(payerInfo, paymentDetails)
+            );
+            setValue("details.qrCode", qrCodeData);
+        } else {
+            setValue("details.qrCode", "");
+        }
+    }
 
     return (
         <ChargesContext.Provider
@@ -258,6 +304,8 @@ export const ChargesContextProvider = ({ children }: ChargesContextProps) => {
                 setShippingType,
                 totalInWordsSwitch,
                 setTotalInWordsSwitch,
+                generateQRSwitch,
+                setGenerateQRSwitch,
                 currency,
                 subTotal,
                 totalAmount,

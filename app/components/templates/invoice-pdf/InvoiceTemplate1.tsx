@@ -66,6 +66,7 @@ const InvoiceTemplate = (props: InvoiceTemplateProps) => {
                     </div>
                 </div>
 
+
                 <div className="mt-6 grid sm:grid-cols-2 gap-3">
                     <div>
                         <h3 className="text-lg font-semibold text-gray-800">
@@ -160,91 +161,101 @@ const InvoiceTemplate = (props: InvoiceTemplateProps) => {
                         <div className="sm:hidden border-b border-gray-200"></div>
                     </div>
                 </div>
+                <div className="flex justify-between">
+                    <div className="mt-2">
+                        {details.qrCode &&
+                            <img
+                                src={details.qrCode}
+                                width={120}
+                                height={60}
 
-                <div className="mt-2 flex sm:justify-end">
-                    <div className="sm:text-right space-y-2">
-                        <div className="grid grid-cols-2 sm:grid-cols-1 gap-3 sm:gap-2">
-                            <dl className="grid sm:grid-cols-5 gap-x-3">
-                                <dt className="col-span-3 font-semibold text-gray-800">
-                                    {translate('subtotal')}
-                                </dt>
-                                <dd className="col-span-2 text-gray-500">
-                                    {formatNumberWithCommas(
-                                        Number(details.subTotal)
-                                    )}{" "}
-                                    {details.currency}
-                                </dd>
-                            </dl>
-                            {details.discountDetails?.amount != undefined &&
-                                details.discountDetails?.amount > 0 && (
-                                    <dl className="grid sm:grid-cols-5 gap-x-3">
-                                        <dt className="col-span-3 font-semibold text-gray-800">
-                                            {translate('discount')}
-                                        </dt>
-                                        <dd className="col-span-2 text-gray-500">
-                                            {details.discountDetails.amountType ===
-                                                "amount"
-                                                ? `- ${details.discountDetails.amount} ${details.currency}`
-                                                : `- ${details.discountDetails.amount}%`}
-                                        </dd>
-                                    </dl>
-                                )}
-                            {details.taxDetails?.amount != undefined &&
-                                details.taxDetails?.amount > 0 && (
-                                    <dl className="grid sm:grid-cols-5 gap-x-3">
-                                        <dt className="col-span-3 font-semibold text-gray-800">
-                                            {translate('tax')}
-                                        </dt>
-                                        <dd className="col-span-2 text-gray-500">
-                                            {details.taxDetails.amountType ===
-                                                "amount"
-                                                ? `+ ${details.taxDetails.amount} ${details.currency}`
-                                                : `+ ${details.taxDetails.amount}%`}
-                                        </dd>
-                                    </dl>
-                                )}
-                            {details.shippingDetails?.cost != undefined &&
-                                details.shippingDetails?.cost > 0 && (
-                                    <dl className="grid sm:grid-cols-5 gap-x-3">
-                                        <dt className="col-span-3 font-semibold text-gray-800">
-                                            {translate('shipping')}
-                                        </dt>
-                                        <dd className="col-span-2 text-gray-500">
-                                            {details.shippingDetails.costType ===
-                                                "amount"
-                                                ? `+ ${details.shippingDetails.cost} ${details.currency}`
-                                                : `+ ${details.shippingDetails.cost}%`}
-                                        </dd>
-                                    </dl>
-                                )}
-                            <dl className="grid sm:grid-cols-5 gap-x-3">
-                                <dt className="col-span-3 font-semibold text-gray-800">
-                                    {translate('total')}
-                                </dt>
-                                <dd className="col-span-2 text-gray-500">
-                                    {formatNumberWithCommas(
-                                        Number(details.totalAmount)
-                                    )}{" "}
-                                    {details.currency}
-                                </dd>
-                            </dl>
-                            {details.totalAmountInWords && (
+                            />
+                        }
+                    </div>
+                    <div className="mt-2 flex sm:justify-end">
+                        <div className="sm:text-right space-y-2">
+                            <div className="grid grid-cols-2 sm:grid-cols-1 gap-3 sm:gap-2">
                                 <dl className="grid sm:grid-cols-5 gap-x-3">
                                     <dt className="col-span-3 font-semibold text-gray-800">
-                                        {translate('totalInWords')}
+                                        {translate('subtotal')}
                                     </dt>
                                     <dd className="col-span-2 text-gray-500">
-                                        <em>
-                                            {details.totalAmountInWords}{" "}
-                                            {details.currency}
-                                        </em>
+                                        {formatNumberWithCommas(
+                                            Number(details.subTotal)
+                                        )}{" "}
+                                        {details.currency}
                                     </dd>
                                 </dl>
-                            )}
+                                {details.discountDetails?.amount != undefined &&
+                                    details.discountDetails?.amount > 0 && (
+                                        <dl className="grid sm:grid-cols-5 gap-x-3">
+                                            <dt className="col-span-3 font-semibold text-gray-800">
+                                                {translate('discount')}
+                                            </dt>
+                                            <dd className="col-span-2 text-gray-500">
+                                                {details.discountDetails.amountType ===
+                                                    "amount"
+                                                    ? `- ${details.discountDetails.amount} ${details.currency}`
+                                                    : `- ${details.discountDetails.amount}%`}
+                                            </dd>
+                                        </dl>
+                                    )}
+                                {details.taxDetails?.amount != undefined &&
+                                    details.taxDetails?.amount > 0 && (
+                                        <dl className="grid sm:grid-cols-5 gap-x-3">
+                                            <dt className="col-span-3 font-semibold text-gray-800">
+                                                {translate('tax')}
+                                            </dt>
+                                            <dd className="col-span-2 text-gray-500">
+                                                {details.taxDetails.amountType ===
+                                                    "amount"
+                                                    ? `+ ${details.taxDetails.amount} ${details.currency}`
+                                                    : `+ ${details.taxDetails.amount}%`}
+                                            </dd>
+                                        </dl>
+                                    )}
+                                {details.shippingDetails?.cost != undefined &&
+                                    details.shippingDetails?.cost > 0 && (
+                                        <dl className="grid sm:grid-cols-5 gap-x-3">
+                                            <dt className="col-span-3 font-semibold text-gray-800">
+                                                {translate('shipping')}
+                                            </dt>
+                                            <dd className="col-span-2 text-gray-500">
+                                                {details.shippingDetails.costType ===
+                                                    "amount"
+                                                    ? `+ ${details.shippingDetails.cost} ${details.currency}`
+                                                    : `+ ${details.shippingDetails.cost}%`}
+                                            </dd>
+                                        </dl>
+                                    )}
+                                <dl className="grid sm:grid-cols-5 gap-x-3">
+                                    <dt className="col-span-3 font-semibold text-gray-800">
+                                        {translate('total')}
+                                    </dt>
+                                    <dd className="col-span-2 text-gray-500">
+                                        {formatNumberWithCommas(
+                                            Number(details.totalAmount)
+                                        )}{" "}
+                                        {details.currency}
+                                    </dd>
+                                </dl>
+                                {details.totalAmountInWords && (
+                                    <dl className="grid sm:grid-cols-5 gap-x-3">
+                                        <dt className="col-span-3 font-semibold text-gray-800">
+                                            {translate('totalInWords')}
+                                        </dt>
+                                        <dd className="col-span-2 text-gray-500">
+                                            <em>
+                                                {details.totalAmountInWords}{" "}
+                                                {details.currency}
+                                            </em>
+                                        </dd>
+                                    </dl>
+                                )}
+                            </div>
                         </div>
                     </div>
                 </div>
-
                 <div>
                     <div className="my-4">
                         {details.additionalNotes &&

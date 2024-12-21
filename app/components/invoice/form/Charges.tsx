@@ -42,6 +42,8 @@ const Charges = () => {
         setShippingType,
         totalInWordsSwitch,
         setTotalInWordsSwitch,
+        generateQRSwitch,
+        setGenerateQRSwitch,
         currency,
         subTotal,
         totalAmount,
@@ -176,6 +178,21 @@ const Charges = () => {
                             disabled={true}
                             onCheckedChange={(value) => {
                                 setTotalInWordsSwitch(value);
+                            }}
+                        />
+                    </div>
+                    <div className="flex justify-between items-center">
+                        <p>{_t("form.steps.summary.generateQR")}</p>{" "}
+                        <p>
+                            {generateQRSwitch
+                                ? _t("form.steps.summary.yes")
+                                : _t("form.steps.summary.no")}
+                        </p>
+                        <Switch
+                            checked={generateQRSwitch}
+
+                            onCheckedChange={(value) => {
+                                setGenerateQRSwitch(value);
                             }}
                         />
                     </div>

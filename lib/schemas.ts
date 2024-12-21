@@ -164,6 +164,7 @@ const InvoiceDetailsSchema = z.object({
   signature: SignatureSchema.optional(),
   updatedAt: fieldValidators.stringOptional,
   pdfTemplate: z.number(),
+  qrCode: z.string().optional(),
 });
 
 const InvoiceSchema = z.object({

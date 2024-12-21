@@ -35,9 +35,9 @@ import { JSONLD, ROOTKEYWORDS } from "@/lib/seo";
 import { BASE_URL, GOOGLE_SC_VERIFICATION, LOCALES } from "@/lib/variables";
 
 export const metadata: Metadata = {
-    title: "Invoify | Free Invoice Generator",
+    title: "Računomat | brezplačni generator računov",
     description:
-        "Create invoices effortlessly with Invoify, the free invoice generator. Try it now!",
+        "Brezplačni generator računov za vaše podjetje. Generirajte račune za svoje podjetje v roku nekaj sekundah.",
     icons: [{ rel: "icon", url: Favicon.src }],
     keywords: ROOTKEYWORDS,
     viewport: "width=device-width, initial-scale=1",

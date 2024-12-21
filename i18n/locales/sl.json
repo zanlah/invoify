@@ -83,6 +83,7 @@
           "type": "Natipkaj",
           "upload": "Naloži"
         },
+        "generateQR": "Generiraj QR kodo",
         "additionalNotes": "Dodatne opombe",
         "paymentTerms": "Plačilni pogoji",
         "discount": "Popust",
