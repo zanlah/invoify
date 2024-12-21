@@ -78,7 +78,7 @@ export async function generatePdfService(req: NextRequest) {
         defaultViewport: chromium.defaultViewport,
         executablePath: await chromium.executablePath(CHROMIUM_EXECUTABLE_PATH),
         headless: true,
-        ignoreHTTPSErrors: true,
+        // ignoreHTTPSErrors: true,
       });
     } else if (ENV === "development") {
       const puppeteer = await import("puppeteer");
@@ -109,10 +109,11 @@ export async function generatePdfService(req: NextRequest) {
     console.log("Style tag added"); // Debugging log
 
     // Generate the PDF
-    const pdf: Buffer = await page.pdf({
+    const pdfBuffer = await page.pdf({
       format: "a4",
       printBackground: true,
     });
+    const pdf = Buffer.from(pdfBuffer);
     console.log("PDF generated"); // Debugging log
 
     for (const page of await browser.pages()) {
