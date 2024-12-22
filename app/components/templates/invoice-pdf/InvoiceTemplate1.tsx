@@ -15,11 +15,12 @@ import { InvoiceType } from "@/types";
 
 interface InvoiceTemplateProps extends InvoiceType {
     t: (key: string) => string;
+    locale?: string;
 }
 
 const InvoiceTemplate = (props: InvoiceTemplateProps) => {
     //const t = useTranslations('invoiceTemplate');
-    const { t, ...data } = props;
+    const { t, locale, ...data } = props;
     const { sender, receiver, details } = data;
 
     const translate = (key: string) => {
@@ -91,7 +92,7 @@ const InvoiceTemplate = (props: InvoiceTemplateProps) => {
                                 <dd className="col-span-3 text-gray-500">
                                     {new Date(
                                         details.invoiceDate
-                                    ).toLocaleDateString("en-US", DATE_OPTIONS)}
+                                    ).toLocaleDateString(locale, DATE_OPTIONS)}
                                 </dd>
                             </dl>
                             <dl className="grid sm:grid-cols-6 gap-x-3">
@@ -100,7 +101,7 @@ const InvoiceTemplate = (props: InvoiceTemplateProps) => {
                                 </dt>
                                 <dd className="col-span-3 text-gray-500">
                                     {new Date(details.dueDate).toLocaleDateString(
-                                        "en-US",
+                                        locale,
                                         DATE_OPTIONS
                                     )}
                                 </dd>
@@ -166,7 +167,8 @@ const InvoiceTemplate = (props: InvoiceTemplateProps) => {
                         {details.qrCode &&
                             <img
                                 src={details.qrCode}
-                                width={120}
+                                width={200}
+                                className="object-contain"
                                 height={60}
 
                             />

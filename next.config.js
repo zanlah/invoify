@@ -1,4 +1,6 @@
 /** @type {import('next').NextConfig} */
+const withNextIntl = require('next-intl/plugin')();
+
 const nextConfig = {
     experimental: {
         serverComponentsExternalPackages: ["puppeteer-core"],
@@ -17,4 +19,4 @@ const withBundleAnalyzer = require("@next/bundle-analyzer")({
     enabled: process.env.ANALYZE === "true",
 });
 
-module.exports = withBundleAnalyzer(nextConfig);
+module.exports = withBundleAnalyzer(withNextIntl(nextConfig));

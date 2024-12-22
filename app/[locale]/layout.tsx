@@ -92,7 +92,7 @@ export default async function LocaleLayout({
                     <Providers>
                         <BaseNavbar />
 
-                        <div className="flex flex-col">{children}</div>
+                        {children}
 
                         <BaseFooter />
 

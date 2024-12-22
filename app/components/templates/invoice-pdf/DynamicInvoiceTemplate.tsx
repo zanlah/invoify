@@ -1,7 +1,7 @@
 import React, { useMemo } from "react";
 
 import dynamic from "next/dynamic";
-import { useTranslations } from "next-intl";
+import { useTranslations, useLocale } from "next-intl";
 // ShadCn
 import { Skeleton } from "@/components/ui/skeleton";
 
@@ -9,6 +9,7 @@ import { Skeleton } from "@/components/ui/skeleton";
 import { InvoiceType } from "@/types";
 interface InvoiceProps extends InvoiceType {
     t?: (key: string) => string;
+    locale?: string;
 }
 
 const DynamicInvoiceTemplateSkeleton = () => {
@@ -16,6 +17,7 @@ const DynamicInvoiceTemplateSkeleton = () => {
 };
 
 const DynamicInvoiceTemplate = (props: InvoiceType) => {
+    const locale = useLocale();
     const t = useTranslations("invoiceTemplate");
 
     // Dynamic template component name
@@ -36,7 +38,7 @@ const DynamicInvoiceTemplate = (props: InvoiceType) => {
         [templateName]
     );
 
-    return <DynamicInvoice {...props} t={t} />;
+    return <DynamicInvoice {...props} t={t} locale={locale} />;
 };
 
 export default DynamicInvoiceTemplate;

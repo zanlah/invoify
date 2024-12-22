@@ -11,7 +11,7 @@ import { CHROMIUM_EXECUTABLE_PATH, ENV, TAILWIND_CDN } from "@/lib/variables";
 
 // Types
 import { InvoiceType } from "@/types";
-
+import { getLocale } from "next-intl/server";
 import { createTranslator } from "next-intl";
 /**
  * Generate a PDF document of an invoice based on the provided data.
@@ -24,6 +24,7 @@ import { createTranslator } from "next-intl";
 export async function generatePdfService(req: NextRequest) {
   const body: InvoiceType = await req.json();
   const locale: string = "sl";
+  const localeIso: string = await getLocale();
   const messages = {
     invoice: "Račun",
     billTo: "Račun za",
@@ -68,6 +69,7 @@ export async function generatePdfService(req: NextRequest) {
       React.createElement(InvoiceTemplate, {
         ...body,
         t: t,
+        locale: localeIso,
       })
     );
 

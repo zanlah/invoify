@@ -274,7 +274,7 @@ const Base64QRCode = async (qrCode: string): Promise<string> => {
     const base64QR = await QRCode.toDataURL(qrCode, {
       errorCorrectionLevel: "M",
       margin: 4,
-      width: 200,
+      width: 250,
       color: {
         dark: "#000000",
         light: "#ffffff",

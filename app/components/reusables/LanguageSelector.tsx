@@ -3,8 +3,8 @@
 import { useParams } from "next/navigation";
 
 // Next Intl
-import { useRouter } from "next-intl/client"; // This useRouter is wrapped with next/navigation useRouter
-
+//import { useRouter } from "next-intl/client"; // This useRouter is wrapped with next/navigation useRouter
+import { Locale, usePathname, useRouter } from '@/i18n/routing';
 // ShadCn
 import {
     Select,
