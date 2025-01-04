@@ -20,7 +20,7 @@ export default function Home() {
                             href="/generator/"
                             className="bg-blue-600 text-white px-8 py-4 rounded-lg text-lg font-semibold hover:bg-blue-700 transition-colors dark:bg-blue-500 dark:hover:bg-blue-600"
                         >
-                            Ustvari brezplačen račun
+                            Napiši račun brezplačno
                         </Link>
                     </div>
 
