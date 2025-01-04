@@ -1,22 +1,11 @@
-import { createNavigation } from "next-intl/navigation";
-import { defineRouting } from "next-intl/routing";
+import { createSharedPathnamesNavigation } from "next-intl/navigation";
 import { LOCALES } from "@/lib/variables";
-const locales = LOCALES.map((locale) => locale.code);
 
-export const routing = defineRouting({
-  locales: locales,
-  defaultLocale: "sl",
-  pathnames: {
-    "/": "/",
-    "/pathnames": {
-      en: "/en",
-      sl: "/si",
-    },
-  },
-});
+export const locales = LOCALES.map((locale) => locale.code);
+export const defaultLocale = "sl";
 
-export type Pathnames = keyof typeof routing.pathnames;
-export type Locale = (typeof routing.locales)[number];
-
-export const { Link, getPathname, redirect, usePathname, useRouter } =
-  createNavigation(routing);
+export const { Link, redirect, usePathname, useRouter } =
+  createSharedPathnamesNavigation({
+    locales,
+    localePrefix: "always",
+  });
