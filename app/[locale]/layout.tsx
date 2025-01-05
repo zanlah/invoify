@@ -58,8 +58,9 @@ export const metadata: Metadata = {
 };
 
 export function generateStaticParams() {
-    const locales = LOCALES.map((locale) => locale.code);
-    return locales;
+    return LOCALES.map((locale) => ({
+        locale: locale.code
+    }));
 }
 
 export default async function LocaleLayout({

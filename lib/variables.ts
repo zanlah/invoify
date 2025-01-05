@@ -53,8 +53,8 @@ export const NODEMAILER_PW = process.env.NODEMAILER_PW;
  * I18N
  */
 export const LOCALES = [
-  { code: "en", name: "English" },
   { code: "sl", name: "Slovenščina" },
+  { code: "en", name: "English" },
   { code: "de", name: "Deutsch" },
   /* { code: "it", name: "Italiano" },
   { code: "es", name: "Español" },
