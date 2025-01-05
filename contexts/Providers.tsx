@@ -5,6 +5,9 @@ import React from "react";
 // RHF
 import { FormProvider, useForm } from "react-hook-form";
 
+// PostHog (analytics)
+import { CSPostHogProvider } from './PHProvider'
+
 // Zod
 import { zodResolver } from "@hookform/resolvers/zod";
 
@@ -27,6 +30,9 @@ type ProvidersProps = {
     children: React.ReactNode;
 };
 
+
+
+
 const Providers = ({ children }: ProvidersProps) => {
     const form = useForm<InvoiceType>({
         resolver: zodResolver(InvoiceSchema),
@@ -40,15 +46,17 @@ const Providers = ({ children }: ProvidersProps) => {
             enableSystem
             disableTransitionOnChange
         >
-            <TranslationProvider>
-                <FormProvider {...form}>
-                    <InvoiceContextProvider>
-                        <ChargesContextProvider>
-                            {children}
-                        </ChargesContextProvider>
-                    </InvoiceContextProvider>
-                </FormProvider>
-            </TranslationProvider>
+            <CSPostHogProvider >
+                <TranslationProvider>
+                    <FormProvider {...form}>
+                        <InvoiceContextProvider>
+                            <ChargesContextProvider>
+                                {children}
+                            </ChargesContextProvider>
+                        </InvoiceContextProvider>
+                    </FormProvider>
+                </TranslationProvider>
+            </CSPostHogProvider>
         </ThemeProvider>
     );
 };
